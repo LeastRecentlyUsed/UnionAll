@@ -1,0 +1,442 @@
+{
+	"info": {
+		"_postman_id": "9471a70e-bbcb-3b43-53b3-cc5d0af6cae2",
+		"name": "DataFork",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GET Nodes",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:57435/fork/node",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "57435",
+					"path": [
+						"fork",
+						"node"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET paged Nodes",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:57435/fork/nodes?pageNumber=2&pageSize=5",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "57435",
+					"path": [
+						"fork",
+						"nodes"
+					],
+					"query": [
+						{
+							"key": "pageNumber",
+							"value": "2"
+						},
+						{
+							"key": "pageSize",
+							"value": "5"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Vectors",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:57435/fork/vectors",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "57435",
+					"path": [
+						"fork",
+						"vectors"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Node Object Vectors",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:57435/fork/nodeobject/29/vectors",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "57435",
+					"path": [
+						"fork",
+						"nodeobject",
+						"29",
+						"vectors"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST Node",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"nodeName\": \"Italy\",\n    \"nodeType\": \"Name\",\n    \"nodeTopic\": \"Country\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:57435/fork/nodes",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "57435",
+					"path": [
+						"fork",
+						"nodes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST Node Set",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n{\n    \"nodeName\": \"Austria\",\n    \"nodeType\": \"Name\",\n    \"nodeTopic\": \"Country\"\n},\n{\n    \"nodeName\": \"Belgium\",\n    \"nodeType\": \"Name\",\n    \"nodeTopic\": \"Country\"\n},\n{\n    \"nodeName\": \"Bulgaria\",\n    \"nodeType\": \"Name\",\n    \"nodeTopic\": \"Country\"\n},\n{\n    \"nodeName\": \"Croatia\",\n    \"nodeType\": \"Name\",\n    \"nodeTopic\": \"Country\"\n},\n{\n    \"nodeName\": \"Czech Republic\",\n    \"nodeType\": \"Name\",\n    \"nodeTopic\": \"Country\"\n},\n{\n    \"nodeName\": \"Denmark\",\n    \"nodeType\": \"Name\",\n    \"nodeTopic\": \"Country\"\n},\n{\n    \"nodeName\": \"Estonia\",\n    \"nodeType\": \"Name\",\n    \"nodeTopic\": \"Country\"\n},\n{\n    \"nodeName\": \"Finland\",\n    \"nodeType\": \"Name\",\n    \"nodeTopic\": \"Country\"\n},\n{\n    \"nodeName\": \"France\",\n    \"nodeType\": \"Name\",\n    \"nodeTopic\": \"Country\"\n},\n{\n    \"nodeName\": \"Germany\",\n    \"nodeType\": \"Name\",\n    \"nodeTopic\": \"Country\"\n},\n{\n    \"nodeName\": \"Greece\",\n    \"nodeType\": \"Name\",\n    \"nodeTopic\": \"Country\"\n},\n{\n    \"nodeName\": \"Hungary\",\n    \"nodeType\": \"Name\",\n    \"nodeTopic\": \"Country\"\n},\n{\n    \"nodeName\": \"Ireland\",\n    \"nodeType\": \"Name\",\n    \"nodeTopic\": \"Country\"\n},\n{\n    \"nodeName\": \"Italy\",\n    \"nodeType\": \"Name\",\n    \"nodeTopic\": \"Country\"\n},\n{\n    \"nodeName\": \"Latvia\",\n    \"nodeType\": \"Name\",\n    \"nodeTopic\": \"Country\"\n},\n{\n    \"nodeName\": \"Lithuania\",\n    \"nodeType\": \"Name\",\n    \"nodeTopic\": \"Country\"\n},\n{\n    \"nodeName\": \"Luxembourg\",\n    \"nodeType\": \"Name\",\n    \"nodeTopic\": \"Country\"\n},\n{\n    \"nodeName\": \"Malta\",\n    \"nodeType\": \"Name\",\n    \"nodeTopic\": \"Country\"\n},\n{\n    \"nodeName\": \"Netherlands\",\n    \"nodeType\": \"Name\",\n    \"nodeTopic\": \"Country\"\n},\n{\n    \"nodeName\": \"Poland\",\n    \"nodeType\": \"Name\",\n    \"nodeTopic\": \"Country\"\n},\n{\n    \"nodeName\": \"Portugal\",\n    \"nodeType\": \"Name\",\n    \"nodeTopic\": \"Country\"\n},\n{\n    \"nodeName\": \"Romania\",\n    \"nodeType\": \"Name\",\n    \"nodeTopic\": \"Country\"\n},\n{\n    \"nodeName\": \"Slovakia\",\n    \"nodeType\": \"Name\",\n    \"nodeTopic\": \"Country\"\n},\n{\n    \"nodeName\": \"Slovenia\",\n    \"nodeType\": \"Name\",\n    \"nodeTopic\": \"Country\"\n},\n{\n    \"nodeName\": \"Spain\",\n    \"nodeType\": \"Name\",\n    \"nodeTopic\": \"Country\"\n},\n{\n    \"nodeName\": \"Sweden\",\n    \"nodeType\": \"Name\",\n    \"nodeTopic\": \"Country\"\n},\n{\n    \"nodeName\": \"United Kingdom\",\n    \"nodeType\": \"Name\",\n    \"nodeTopic\": \"Country\"\n}\n]"
+				},
+				"url": {
+					"raw": "http://localhost:57435/fork/nodeset",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "57435",
+					"path": [
+						"fork",
+						"nodeset"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST Node Set 2",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n{\n    \"nodeName\": \"Mario Draghi\",\n    \"nodeType\": \"Name\",\n    \"nodeTopic\": \"Individual\"\n},\n{\n    \"nodeName\": \"The European Economic Community\",\n    \"nodeType\": \"Name\",\n    \"nodeTopic\": \"Political\"\n}\n]"
+				},
+				"url": {
+					"raw": "http://localhost:57435/fork/nodeset",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "57435",
+					"path": [
+						"fork",
+						"nodeset"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE Node",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:57435/fork/nodes/28",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "57435",
+					"path": [
+						"fork",
+						"nodes",
+						"28"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT Node",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"nodeName\": \"Austria\",\n    \"nodeType\": \"Measure\",\n    \"nodeTopic\": \"Commercial\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:57435/fork/nodes/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "57435",
+					"path": [
+						"fork",
+						"nodes",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PATCH Node",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json-patch+json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n    {\n      \"op\": \"replace\",\n      \"path\": \"/nodeType\",\n      \"value\": \"Percentage\"\n    },\n    {\n      \"op\": \"replace\",\n      \"path\": \"/nodeTopic\",\n      \"value\": \"Industrial\"\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"/nodeType\",\n      \"path\": \"/nodeName\"\n    }\n]"
+				},
+				"url": {
+					"raw": "http://localhost:57435/fork/nodes/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "57435",
+					"path": [
+						"fork",
+						"nodes",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT Vector",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"vectorPhrase\": \"is a country within the\",\n    \"nodeSubject\": \"1\",\n    \"nodeObject\": \"29\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:57435/fork/vectors",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "57435",
+					"path": [
+						"fork",
+						"vectors"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST Vector",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"vectorPhrase\": \"is a country within the\",\n    \"nodeSubject\": \"1\",\n    \"nodeObject\": \"29\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:57435/fork/vectors",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "57435",
+					"path": [
+						"fork",
+						"vectors"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST Vector Set",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n{\n    \"vectorPhrase\": \"is a country within the\",\n    \"nodeSubject\": \"2\",\n    \"nodeObject\": \"29\"\n},\n{\n    \"vectorPhrase\": \"is a country within the\",\n    \"nodeSubject\": \"3\",\n    \"nodeObject\": \"29\"\n},\n{\n    \"vectorPhrase\": \"is a country within the\",\n    \"nodeSubject\": \"4\",\n    \"nodeObject\": \"29\"\n},\n{\n    \"vectorPhrase\": \"is a country within the\",\n    \"nodeSubject\": \"5\",\n    \"nodeObject\": \"29\"\n},\n{\n    \"vectorPhrase\": \"is a country within the\",\n    \"nodeSubject\": \"6\",\n    \"nodeObject\": \"29\"\n},\n{\n    \"vectorPhrase\": \"is a country within the\",\n    \"nodeSubject\": \"7\",\n    \"nodeObject\": \"29\"\n}\n]"
+				},
+				"url": {
+					"raw": "http://localhost:57435/fork/vectorset",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "57435",
+					"path": [
+						"fork",
+						"vectorset"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE Vector",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:57435/fork/vectors/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "57435",
+					"path": [
+						"fork",
+						"vectors",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Nodes with Search",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:57435/fork/node?searchQuery=Bul",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "57435",
+					"path": [
+						"fork",
+						"node"
+					],
+					"query": [
+						{
+							"key": "searchQuery",
+							"value": "Bul"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
