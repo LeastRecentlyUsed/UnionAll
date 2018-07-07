@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace DataFork.Domain
+﻿namespace UnionAll.Domain
 {
     public class ChangeStatus
     {

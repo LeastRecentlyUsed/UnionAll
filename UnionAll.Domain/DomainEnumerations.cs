@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace DataFork.Domain
+﻿namespace UnionAll.Domain
 {
     public enum NodeValueTypes
     {

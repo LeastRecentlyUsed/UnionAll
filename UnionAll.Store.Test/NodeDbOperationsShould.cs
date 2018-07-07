@@ -2,11 +2,12 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
-using DataFork.Domain;
-using DataFork.DataStore.Services;
+using UnionAll.Domain;
+using UnionAll.Store.Services;
 using System.Threading.Tasks;
+using System;
 
-namespace DataFork.DataStore.Test
+namespace UnionAll.Store.Test
 {
     [TestClass]
     public class NodeDbOperationsShould
@@ -88,6 +89,73 @@ namespace DataFork.DataStore.Test
                 // assert
                 Assert.IsInstanceOfType(nodeSubjectList, typeof(IEnumerable<KeyValuePair<int, string>>));
             }
+        }
+
+        [TestMethod]
+        public async Task InsertNodeSetAndThenSelectAllNodes()
+        {
+            //arrange
+            DataRequestParams _params = _reqParams;
+            _params.PageSize = 100;
+            IEnumerable<Node> _nodeSetSelected;
+            IEnumerable<Node> _nodeSetInserted;
+            int _insertCount = 0;
+            int _selectCount = 0;
+            IEnumerable<Node> _nodeSetToInsert = new List<Node>
+            {
+                _node1, _node2, _node3, _node7, _node8
+            };
+            //act
+            using (var ctxInsertSet = new DataContext(_opt.Options))
+            {
+                NodeRepository _db = new NodeRepository(ctxInsertSet);
+                _nodeSetInserted = await _db.InsertNodeSetAsync(_nodeSetToInsert);
+            }
+            _insertCount = _nodeSetToInsert.Count();
+            using (var ctxReadSet = new DataContext(_opt.Options))
+            {
+                NodeRepository _db = new NodeRepository(ctxReadSet);
+                _nodeSetSelected = await _db.SelectAllNodesAsync(_params);
+            }
+            _selectCount = _nodeSetSelected.Count();
+            //assert
+            Assert.AreEqual(_selectCount, _insertCount,
+                $"Inserted Count {_insertCount} is not selected count from DB {_selectCount}");
+        }
+
+        [TestMethod]
+        public async Task InsertNodeSetAndThenSelectAllPaginatedNodes()
+        {
+            //arrange
+            DataRequestParams _params = _reqParams;
+            int _selectCount = 0;
+            int _pageCount = 0;
+            IEnumerable<Node> _nodeSetToInsert = new List<Node>
+            {
+                _node1, _node2, _node3, _node7, _node8
+            };
+            int _insertCount = _nodeSetToInsert.Count();
+            int _expectedPageCount = (_insertCount + _params.PageSize -1) / _params.PageSize;
+            //act
+            using (var ctxInsertSet = new DataContext(_opt.Options))
+            {
+                NodeRepository _db = new NodeRepository(ctxInsertSet);
+                var _ins = await _db.InsertNodeSetAsync(_nodeSetToInsert);
+            }
+            // act pagination
+            using (var ctxReadSet = new DataContext(_opt.Options))
+            {
+                NodeRepository _db = new NodeRepository(ctxReadSet);
+                while (_selectCount < _insertCount)
+                {
+                    var _sel = await _db.SelectAllNodesAsync(_params);
+                    _pageCount++;
+                    _selectCount += _sel.Count();
+                }
+            }
+            //assert
+            Assert.AreEqual(_expectedPageCount, _pageCount,
+                $"Expected {_expectedPageCount} pages but executed ]{_pageCount} pages");
         }
 
         [TestMethod]
@@ -228,36 +296,50 @@ namespace DataFork.DataStore.Test
         }
 
         [TestMethod]
-        public async Task InsertAndSelectASetOfNodes()
+        public async Task InsertAndSelectTheSameNodeSet()
         {
             // arrange
+            IEnumerable<int> _nodeIdSet;
             IEnumerable<Node> _nodeSetSelected;
             IEnumerable<Node> _nodeSetInserted;
             int _insertCount = 0;
             int _selectCount = 0;
             IEnumerable<Node> _nodeSetToInsert = new List<Node>
             {
-                _node1, _node2, _node3, _node7, _node8
+                _node1, _node2, _node3, _node7
             };
             _insertCount = _nodeSetToInsert.Count();
             // act
             using (var ctxSave = new DataContext(_opt.Options))
             {
                 NodeRepository _db = new NodeRepository(ctxSave);
-                _nodeSetInserted = await _db.InsertNodeSetAsync(_nodeSetToInsert);
+                var _ins = await _db.InsertNodeSetAsync(_nodeSetToInsert);
             }
 
-            if (_nodeSetInserted == null)
-                Assert.Fail("InsertNodeSetAsync() returned a null collection");
+            var _names = _nodeSetToInsert.Select(x => x.NodeName);
 
-            var _nodeIdSet = _nodeSetInserted.Select(x => x.NodeId);
             using (var ctxRead = new DataContext(_opt.Options))
             {
-                NodeRepository _db = new NodeRepository(ctxRead);
-                _nodeSetSelected = await _db.SelectNodeSetAsync(_nodeIdSet);
+                _nodeSetInserted = (
+                    from n in ctxRead.Nodes
+                    where _names.Contains(n.NodeName)
+                    select n
+                    ).ToList();
             }
-            _selectCount = _nodeSetSelected.Count();
+
+            _selectCount = _nodeSetInserted.Count();
+            _nodeIdSet = _nodeSetInserted.Select(x => x.NodeId);
+
+            if (_nodeIdSet.Count() == 0)
+                Assert.Fail("No IDs returned from the Node Search on Node Name");
+
+            using (var ctxCheck = new DataContext(_opt.Options))
+            {
+                NodeRepository _dbRead = new NodeRepository(ctxCheck);
+                _nodeSetSelected = await _dbRead.SelectNodeSetAsync(_nodeIdSet);
+            }
             // assert
+            //Assert.AreEqual(_nodeSetSelected.Count(), _selectCount);
             Assert.AreEqual(_insertCount, _selectCount);
         }
 

@@ -1,10 +1,7 @@
-﻿using System;
-using System.Linq;
-using Microsoft.EntityFrameworkCore;
-using DataFork.Domain;
-using System.Threading.Tasks;
+﻿using Microsoft.EntityFrameworkCore;
+using UnionAll.Domain;
 
-namespace DataFork.DataStore.Services
+namespace UnionAll.Store.Services
 {
     public class DataContext: DbContext
     {

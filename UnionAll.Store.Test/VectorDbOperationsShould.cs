@@ -2,11 +2,11 @@
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
-using DataFork.Domain;
-using DataFork.DataStore.Services;
+using UnionAll.Domain;
+using UnionAll.Store.Services;
 using System.Threading.Tasks;
 
-namespace DataFork.DataStore.Test
+namespace UnionAll.Store.Test
 {
     [TestClass]
     public class VectorDbOperationsShould

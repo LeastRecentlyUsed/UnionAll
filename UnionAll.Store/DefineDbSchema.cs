@@ -1,8 +1,8 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore;
-using DataFork.Domain;
+using UnionAll.Domain;
 
-namespace DataFork.DataStore
+namespace UnionAll.Store
 {
     public class DefineDbSchema
     {

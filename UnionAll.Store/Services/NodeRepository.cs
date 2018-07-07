@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using DataFork.Domain;
+using UnionAll.Domain;
 
-namespace DataFork.DataStore.Services
+namespace UnionAll.Store.Services
 {
     public class NodeRepository: INodeRepository
     {

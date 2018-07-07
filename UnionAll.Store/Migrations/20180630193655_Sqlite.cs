@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace DataFork.DataStore.Migrations
+namespace UnionAll.Store.Migrations
 {
     public partial class Sqlite : Migration
     {

@@ -1,7 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-using DataFork.Domain;
-
-namespace DataFork.API.Models
+﻿namespace UnionAll.Api.Models
 {
     public class NodeCreateDto: NodeEdit
     {        

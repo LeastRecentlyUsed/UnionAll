@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Text.RegularExpressions;
 using System.ComponentModel.DataAnnotations;
 
-namespace DataFork.Domain
+namespace UnionAll.Domain
 {
     public class Node: ChangeStatus
     {

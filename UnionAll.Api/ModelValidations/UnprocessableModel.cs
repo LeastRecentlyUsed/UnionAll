@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using System;
 
-namespace DataFork.API.ModelValidations
+namespace UnionAll.Api.ModelValidations
 {
     // a custom model validation
     public class UnprocessableModel: ObjectResult

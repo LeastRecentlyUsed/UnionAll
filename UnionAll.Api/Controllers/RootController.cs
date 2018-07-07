@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 
-namespace DataFork.API.Controllers
+namespace UnionAll.Api.Controllers
 {
     public class RootController : Controller
     {
@@ -15,7 +12,7 @@ namespace DataFork.API.Controllers
             _urlHelper = urlHelper;
         }
 
-        [HttpGet("fork", Name = "GetRoot")]
+        [HttpGet("/", Name = "GetRoot")]
         public IActionResult GetRoot([FromHeader(Name = "Accept")] string mediaType)
         {
             if (mediaType == "application/vnd.fork.v1+json")

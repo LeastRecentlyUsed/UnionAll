@@ -1,8 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
-using DataFork.Domain;
-using DataFork.API.ModelValidations;
+﻿using UnionAll.Api.ModelValidations;
 
-namespace DataFork.API.Models
+namespace UnionAll.Api.Models
 {
     public class NodeUpdateDto: NodeEdit
     {

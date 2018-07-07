@@ -1,9 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using System;
-using DataFork.API.Models;
-using DataFork.Domain;
+using UnionAll.Domain;
 
-namespace DataFork.API.ModelValidations
+namespace UnionAll.Api.ModelValidations
 {
     // a custom attribute validation.
     public class NodeEnumNotDefault: ValidationAttribute

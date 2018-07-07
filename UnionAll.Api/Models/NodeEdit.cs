@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using DataFork.Domain;
+using UnionAll.Domain;
 
-namespace DataFork.API.Models
+namespace UnionAll.Api.Models
 {
     // abstract base class cannot be used on its own.
     // virtual properties can be overriden in inheriting class.

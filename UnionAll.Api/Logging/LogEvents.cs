@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace DataFork.API.Logging
+﻿namespace UnionAll.Api.Logging
 {
     public static class LogEvents
     {

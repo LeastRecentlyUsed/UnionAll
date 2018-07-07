@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
-namespace DataFork.API.Models
+namespace UnionAll.Api.Models
 {
     public abstract class LinkResouceBaseDto
     {

@@ -1,11 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
-using DataFork.Domain;
+using UnionAll.Domain;
 
-namespace DataFork.DataStore
+namespace UnionAll.Store
 {
     public static class DataTracking
     {

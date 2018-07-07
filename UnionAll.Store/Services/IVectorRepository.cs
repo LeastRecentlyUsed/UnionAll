@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using DataFork.Domain;
+using UnionAll.Domain;
 
-namespace DataFork.DataStore.Services
+namespace UnionAll.Store.Services
 {
     public interface IVectorRepository
     {

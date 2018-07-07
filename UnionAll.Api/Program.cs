@@ -9,7 +9,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using NLog.Web;
 
-namespace DataFork.API
+namespace UnionAll.Api
 {
     public class Program
     {

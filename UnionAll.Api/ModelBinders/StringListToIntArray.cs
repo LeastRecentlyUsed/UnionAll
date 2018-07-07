@@ -1,12 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Reflection;
 using System.Linq;
 using System.Threading.Tasks;
 using System.ComponentModel;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 
-namespace DataFork.API.ModelBinders
+namespace UnionAll.Api.ModelBinders
 {
     public class StringListToIntArray : IModelBinder
     {
