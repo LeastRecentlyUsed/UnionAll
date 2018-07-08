@@ -1,108 +1,12 @@
 {
 	"info": {
-		"_postman_id": "9471a70e-bbcb-3b43-53b3-cc5d0af6cae2",
-		"name": "DataFork",
+		"_postman_id": "891c5e4f-56ac-492e-8811-b9fe561aa5c8",
+		"name": "UnionAll",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
-			"name": "GET Nodes",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"body": {},
-				"url": {
-					"raw": "http://localhost:57435/fork/node",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "57435",
-					"path": [
-						"fork",
-						"node"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "GET paged Nodes",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"body": {},
-				"url": {
-					"raw": "http://localhost:57435/fork/nodes?pageNumber=2&pageSize=5",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "57435",
-					"path": [
-						"fork",
-						"nodes"
-					],
-					"query": [
-						{
-							"key": "pageNumber",
-							"value": "2"
-						},
-						{
-							"key": "pageSize",
-							"value": "5"
-						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "GET Vectors",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"body": {},
-				"url": {
-					"raw": "http://localhost:57435/fork/vectors",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "57435",
-					"path": [
-						"fork",
-						"vectors"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "GET Node Object Vectors",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"body": {},
-				"url": {
-					"raw": "http://localhost:57435/fork/nodeobject/29/vectors",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "57435",
-					"path": [
-						"fork",
-						"nodeobject",
-						"29",
-						"vectors"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "POST Node",
+			"name": "01 POST Node",
 			"request": {
 				"method": "POST",
 				"header": [
@@ -117,25 +21,25 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"nodeName\": \"Italy\",\n    \"nodeType\": \"Name\",\n    \"nodeTopic\": \"Country\"\n}"
+					"raw": "{\n    \"nodeName\": \"Subaru\",\n    \"nodeType\": \"Name\",\n    \"nodeTopic\": \"Default\"\n}"
 				},
 				"url": {
-					"raw": "http://localhost:57435/fork/nodes",
+					"raw": "http://localhost:57435/node",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "57435",
 					"path": [
-						"fork",
-						"nodes"
+						"node"
 					]
-				}
+				},
+				"description": "Create the first Node object using the basic application/json structure."
 			},
 			"response": []
 		},
 		{
-			"name": "POST Node Set",
+			"name": "02 POST Node Set",
 			"request": {
 				"method": "POST",
 				"header": [
@@ -153,22 +57,22 @@
 					"raw": "[\n{\n    \"nodeName\": \"Austria\",\n    \"nodeType\": \"Name\",\n    \"nodeTopic\": \"Country\"\n},\n{\n    \"nodeName\": \"Belgium\",\n    \"nodeType\": \"Name\",\n    \"nodeTopic\": \"Country\"\n},\n{\n    \"nodeName\": \"Bulgaria\",\n    \"nodeType\": \"Name\",\n    \"nodeTopic\": \"Country\"\n},\n{\n    \"nodeName\": \"Croatia\",\n    \"nodeType\": \"Name\",\n    \"nodeTopic\": \"Country\"\n},\n{\n    \"nodeName\": \"Czech Republic\",\n    \"nodeType\": \"Name\",\n    \"nodeTopic\": \"Country\"\n},\n{\n    \"nodeName\": \"Denmark\",\n    \"nodeType\": \"Name\",\n    \"nodeTopic\": \"Country\"\n},\n{\n    \"nodeName\": \"Estonia\",\n    \"nodeType\": \"Name\",\n    \"nodeTopic\": \"Country\"\n},\n{\n    \"nodeName\": \"Finland\",\n    \"nodeType\": \"Name\",\n    \"nodeTopic\": \"Country\"\n},\n{\n    \"nodeName\": \"France\",\n    \"nodeType\": \"Name\",\n    \"nodeTopic\": \"Country\"\n},\n{\n    \"nodeName\": \"Germany\",\n    \"nodeType\": \"Name\",\n    \"nodeTopic\": \"Country\"\n},\n{\n    \"nodeName\": \"Greece\",\n    \"nodeType\": \"Name\",\n    \"nodeTopic\": \"Country\"\n},\n{\n    \"nodeName\": \"Hungary\",\n    \"nodeType\": \"Name\",\n    \"nodeTopic\": \"Country\"\n},\n{\n    \"nodeName\": \"Ireland\",\n    \"nodeType\": \"Name\",\n    \"nodeTopic\": \"Country\"\n},\n{\n    \"nodeName\": \"Italy\",\n    \"nodeType\": \"Name\",\n    \"nodeTopic\": \"Country\"\n},\n{\n    \"nodeName\": \"Latvia\",\n    \"nodeType\": \"Name\",\n    \"nodeTopic\": \"Country\"\n},\n{\n    \"nodeName\": \"Lithuania\",\n    \"nodeType\": \"Name\",\n    \"nodeTopic\": \"Country\"\n},\n{\n    \"nodeName\": \"Luxembourg\",\n    \"nodeType\": \"Name\",\n    \"nodeTopic\": \"Country\"\n},\n{\n    \"nodeName\": \"Malta\",\n    \"nodeType\": \"Name\",\n    \"nodeTopic\": \"Country\"\n},\n{\n    \"nodeName\": \"Netherlands\",\n    \"nodeType\": \"Name\",\n    \"nodeTopic\": \"Country\"\n},\n{\n    \"nodeName\": \"Poland\",\n    \"nodeType\": \"Name\",\n    \"nodeTopic\": \"Country\"\n},\n{\n    \"nodeName\": \"Portugal\",\n    \"nodeType\": \"Name\",\n    \"nodeTopic\": \"Country\"\n},\n{\n    \"nodeName\": \"Romania\",\n    \"nodeType\": \"Name\",\n    \"nodeTopic\": \"Country\"\n},\n{\n    \"nodeName\": \"Slovakia\",\n    \"nodeType\": \"Name\",\n    \"nodeTopic\": \"Country\"\n},\n{\n    \"nodeName\": \"Slovenia\",\n    \"nodeType\": \"Name\",\n    \"nodeTopic\": \"Country\"\n},\n{\n    \"nodeName\": \"Spain\",\n    \"nodeType\": \"Name\",\n    \"nodeTopic\": \"Country\"\n},\n{\n    \"nodeName\": \"Sweden\",\n    \"nodeType\": \"Name\",\n    \"nodeTopic\": \"Country\"\n},\n{\n    \"nodeName\": \"United Kingdom\",\n    \"nodeType\": \"Name\",\n    \"nodeTopic\": \"Country\"\n}\n]"
 				},
 				"url": {
-					"raw": "http://localhost:57435/fork/nodeset",
+					"raw": "http://localhost:57435/nodes",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "57435",
 					"path": [
-						"fork",
-						"nodeset"
+						"nodes"
 					]
-				}
+				},
+				"description": "Add a collection of Node objects using the application/json basic structure."
 			},
 			"response": []
 		},
 		{
-			"name": "POST Node Set 2",
+			"name": "03 POST Node Set 2",
 			"request": {
 				"method": "POST",
 				"header": [
@@ -186,44 +90,192 @@
 					"raw": "[\n{\n    \"nodeName\": \"Mario Draghi\",\n    \"nodeType\": \"Name\",\n    \"nodeTopic\": \"Individual\"\n},\n{\n    \"nodeName\": \"The European Economic Community\",\n    \"nodeType\": \"Name\",\n    \"nodeTopic\": \"Political\"\n}\n]"
 				},
 				"url": {
-					"raw": "http://localhost:57435/fork/nodeset",
+					"raw": "http://localhost:57435/nodes",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "57435",
 					"path": [
-						"fork",
-						"nodeset"
+						"nodes"
 					]
-				}
+				},
+				"description": "Add a couple more nodes for contextual purposes when linking via vectors later on."
 			},
 			"response": []
 		},
 		{
-			"name": "DELETE Node",
+			"name": "04 GET Nodes",
 			"request": {
-				"method": "DELETE",
-				"header": [],
-				"body": {},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"url": {
-					"raw": "http://localhost:57435/fork/nodes/28",
+					"raw": "http://localhost:57435/nodes",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "57435",
 					"path": [
-						"fork",
-						"nodes",
-						"28"
+						"nodes"
 					]
-				}
+				},
+				"description": "Retrieve all the nodes created so far using the application/json basic return structure."
 			},
 			"response": []
 		},
 		{
-			"name": "PUT Node",
+			"name": "05 GET Nodes (unionall)",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/unionall+json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:57435/nodes",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "57435",
+					"path": [
+						"nodes"
+					]
+				},
+				"description": "Retrieve all the nodes created so far using the custom  application/unionall+json value with links return structure."
+			},
+			"response": []
+		},
+		{
+			"name": "06 GET Nodes with Pagination",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:57435/nodes?pageNumber=1&pageSize=5",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "57435",
+					"path": [
+						"nodes"
+					],
+					"query": [
+						{
+							"key": "pageNumber",
+							"value": "1"
+						},
+						{
+							"key": "pageSize",
+							"value": "5"
+						}
+					]
+				},
+				"description": "Retrieve one page of 5 nodes using the application/json basic return structure.  Next and Previous page links for continued navigation appear in the response header."
+			},
+			"response": []
+		},
+		{
+			"name": "07 GET Nodes with Pagination and node name search",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:57435/nodes?searchQuery=be&pageNumber=1&pageSize=5",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "57435",
+					"path": [
+						"nodes"
+					],
+					"query": [
+						{
+							"key": "searchQuery",
+							"value": "be"
+						},
+						{
+							"key": "pageNumber",
+							"value": "1"
+						},
+						{
+							"key": "pageSize",
+							"value": "5"
+						}
+					]
+				},
+				"description": "Search for nodes with a name containing the string 'be' (should only return Belgium) and restrict the first page to 5 results."
+			},
+			"response": []
+		},
+		{
+			"name": "08 GET Node Pairs",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:57435/nodes/pairs",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "57435",
+					"path": [
+						"nodes",
+						"pairs"
+					]
+				},
+				"description": "Retrieve all nodes as a key:value list (id : node name).  This can also be paginated and searched as in previous examples."
+			},
+			"response": []
+		},
+		{
+			"name": "09 PUT Node",
 			"request": {
 				"method": "PUT",
 				"header": [
@@ -238,26 +290,26 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"nodeName\": \"Austria\",\n    \"nodeType\": \"Measure\",\n    \"nodeTopic\": \"Commercial\"\n}"
+					"raw": "{\n    \"nodeName\": \"Subaru\",\n    \"nodeType\": \"Measure\",\n    \"nodeTopic\": \"Commercial\"\n}"
 				},
 				"url": {
-					"raw": "http://localhost:57435/fork/nodes/1",
+					"raw": "http://localhost:57435/node/1",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "57435",
 					"path": [
-						"fork",
-						"nodes",
+						"node",
 						"1"
 					]
-				}
+				},
+				"description": "Overwrite an existing Node with new details."
 			},
 			"response": []
 		},
 		{
-			"name": "PATCH Node",
+			"name": "10 PATCH Node",
 			"request": {
 				"method": "PATCH",
 				"header": [
@@ -275,23 +327,166 @@
 					"raw": "[\n    {\n      \"op\": \"replace\",\n      \"path\": \"/nodeType\",\n      \"value\": \"Percentage\"\n    },\n    {\n      \"op\": \"replace\",\n      \"path\": \"/nodeTopic\",\n      \"value\": \"Industrial\"\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"/nodeType\",\n      \"path\": \"/nodeName\"\n    }\n]"
 				},
 				"url": {
-					"raw": "http://localhost:57435/fork/nodes/1",
+					"raw": "http://localhost:57435/node/1",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "57435",
 					"path": [
-						"fork",
-						"nodes",
+						"node",
 						"1"
 					]
-				}
+				},
+				"description": "Partially update some values in the Node.  Note that the request header content type is a json patch request but the acccept is still just application/json  "
 			},
 			"response": []
 		},
 		{
-			"name": "PUT Vector",
+			"name": "11 POST Vector",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"vectorPhrase\": \"is a member of\",\n    \"nodeObject\": \"30\",\n    \"nodeParent\": \"29\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:57435/node/2/vector",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "57435",
+					"path": [
+						"node",
+						"2",
+						"vector"
+					]
+				},
+				"description": "Create a new Vector for Node 2. Link this to the EEC and Mario as the parent node.  Use the standard application/json structure which does not impact the request body but does impact the layout of the response body."
+			},
+			"response": []
+		},
+		{
+			"name": "12 POST Vector Set (unionall)",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/unionall+json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n{\n    \"vectorPhrase\": \"is a country within the\",\n    \"nodeObject\": \"30\",\n    \"nodeParent\": \"29\"\n},\n{\n    \"vectorPhrase\": \"engaged in a trade dispute\",\n    \"nodeObject\": \"14\"\n},\n{\n    \"vectorPhrase\": \"once hosted an economic forum sponsored by\",\n    \"nodeObject\": \"20\"\n},\n{\n    \"vectorPhrase\": \"shares a land border with\",\n    \"nodeObject\": \"25\"\n},\n{\n    \"vectorPhrase\": \"imports 65% of total oranges from\",\n    \"nodeObject\": \"3\"\n},\n{\n    \"vectorPhrase\": \"uses the standardied credit risk models from\",\n    \"nodeObject\": \"30\"\n}\n]"
+				},
+				"url": {
+					"raw": "http://localhost:57435/node/24/vectors",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "57435",
+					"path": [
+						"node",
+						"24",
+						"vectors"
+					]
+				},
+				"description": "Create a set of Vectors for a Node.  Use the application/unionall+json accept header so the returned content is in the custom structure."
+			},
+			"response": []
+		},
+		{
+			"name": "13 GET Vector Set",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:57435/node/24/vectors/(3,4,5,6)",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "57435",
+					"path": [
+						"node",
+						"24",
+						"vectors",
+						"(3,4,5,6)"
+					]
+				},
+				"description": "Retrieve a list of specific Vectors for a Node."
+			},
+			"response": []
+		},
+		{
+			"name": "14 GET Vectors with Pagination",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:57435/node/24/vectors?pageNumber=1&pageSize=2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "57435",
+					"path": [
+						"node",
+						"24",
+						"vectors"
+					],
+					"query": [
+						{
+							"key": "pageNumber",
+							"value": "1"
+						},
+						{
+							"key": "pageSize",
+							"value": "2"
+						}
+					]
+				},
+				"description": "Retrieve all Vectors for a Node using the application/json return structure with pagination links shown in the response header."
+			},
+			"response": []
+		},
+		{
+			"name": "15 PUT Vector",
 			"request": {
 				"method": "PUT",
 				"header": [
@@ -306,31 +501,34 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"vectorPhrase\": \"is a country within the\",\n    \"nodeSubject\": \"1\",\n    \"nodeObject\": \"29\"\n}"
+					"raw": "{\n    \"vectorPhrase\": \"does not share any land border with\",\n    \"nodeObject\": \"3\"\n}"
 				},
 				"url": {
-					"raw": "http://localhost:57435/fork/vectors",
+					"raw": "http://localhost:57435/node/24/vector/6",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "57435",
 					"path": [
-						"fork",
-						"vectors"
+						"node",
+						"24",
+						"vector",
+						"6"
 					]
-				}
+				},
+				"description": "Overwrite one Vector details for a Node."
 			},
 			"response": []
 		},
 		{
-			"name": "POST Vector",
+			"name": "16 PATCH Vector",
 			"request": {
-				"method": "POST",
+				"method": "PATCH",
 				"header": [
 					{
 						"key": "Content-Type",
-						"value": "application/json"
+						"value": "application/json-patch+json"
 					},
 					{
 						"key": "Accept",
@@ -339,102 +537,75 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"vectorPhrase\": \"is a country within the\",\n    \"nodeSubject\": \"1\",\n    \"nodeObject\": \"29\"\n}"
+					"raw": "[\n    {\n      \"op\": \"replace\",\n      \"path\": \"/nodeObject\",\n      \"value\": \"26\"\n    }\n]"
 				},
 				"url": {
-					"raw": "http://localhost:57435/fork/vectors",
+					"raw": "http://localhost:57435/node/24/vector/4",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "57435",
 					"path": [
-						"fork",
-						"vectors"
+						"node",
+						"24",
+						"vector",
+						"4"
 					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "POST Vector Set",
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json"
-					},
-					{
-						"key": "Accept",
-						"value": "application/json"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "[\n{\n    \"vectorPhrase\": \"is a country within the\",\n    \"nodeSubject\": \"2\",\n    \"nodeObject\": \"29\"\n},\n{\n    \"vectorPhrase\": \"is a country within the\",\n    \"nodeSubject\": \"3\",\n    \"nodeObject\": \"29\"\n},\n{\n    \"vectorPhrase\": \"is a country within the\",\n    \"nodeSubject\": \"4\",\n    \"nodeObject\": \"29\"\n},\n{\n    \"vectorPhrase\": \"is a country within the\",\n    \"nodeSubject\": \"5\",\n    \"nodeObject\": \"29\"\n},\n{\n    \"vectorPhrase\": \"is a country within the\",\n    \"nodeSubject\": \"6\",\n    \"nodeObject\": \"29\"\n},\n{\n    \"vectorPhrase\": \"is a country within the\",\n    \"nodeSubject\": \"7\",\n    \"nodeObject\": \"29\"\n}\n]"
 				},
-				"url": {
-					"raw": "http://localhost:57435/fork/vectorset",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "57435",
-					"path": [
-						"fork",
-						"vectorset"
-					]
-				}
+				"description": "Update a single value within the Vector.  Notice the updated timestamp in the database table."
 			},
 			"response": []
 		},
 		{
-			"name": "DELETE Vector",
+			"name": "17 DELETE Vector",
 			"request": {
 				"method": "DELETE",
 				"header": [],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"url": {
-					"raw": "http://localhost:57435/fork/vectors/1",
+					"raw": "http://localhost:57435/node/24/vector/8",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "57435",
 					"path": [
-						"fork",
-						"vectors",
-						"1"
+						"node",
+						"24",
+						"vector",
+						"8"
 					]
-				}
+				},
+				"description": "Remove the ability of a Vector to be retrieved from the data store (sets the vector status to Deleted). "
 			},
 			"response": []
 		},
 		{
-			"name": "GET Nodes with Search",
+			"name": "18 DELETE Node",
 			"request": {
-				"method": "GET",
+				"method": "DELETE",
 				"header": [],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"url": {
-					"raw": "http://localhost:57435/fork/node?searchQuery=Bul",
+					"raw": "http://localhost:57435/node/1",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "57435",
 					"path": [
-						"fork",
-						"node"
-					],
-					"query": [
-						{
-							"key": "searchQuery",
-							"value": "Bul"
-						}
+						"node",
+						"1"
 					]
-				}
+				},
+				"description": "Remove the ability of the Node to be retrieved from the data store (set the Node stauts to Deleted)."
 			},
 			"response": []
 		}

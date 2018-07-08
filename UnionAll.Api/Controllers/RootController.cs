@@ -15,7 +15,7 @@ namespace UnionAll.Api.Controllers
         [HttpGet("/", Name = "GetRoot")]
         public IActionResult GetRoot([FromHeader(Name = "Accept")] string mediaType)
         {
-            if (mediaType == "application/vnd.fork.v1+json")
+            if (mediaType == "application/unionall+json")
             {
                 var links = new List<Models.LinkDto>();
 

@@ -127,7 +127,7 @@ namespace UnionAll.Api
 
                 if (jsonOutFormats != null)
                 {
-                    jsonOutFormats.SupportedMediaTypes.Add("application/vnd.fork.v1+json");
+                    jsonOutFormats.SupportedMediaTypes.Add("application/unionall+json");
                 }
             });
 

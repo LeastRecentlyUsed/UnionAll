@@ -21,41 +21,31 @@ namespace UnionAll.Store
 
             mod.Entity<Node>()
                 .Property(p => p.NodeId)
-                .HasColumnName("NODE_ID")
-                .HasColumnType("INTEGER");
+                .HasColumnName("NODE_ID");
 
             mod.Entity<Node>()
                 .Property(p => p.NodeName)
                 .HasColumnName("NODE_NAME")
-                .HasColumnType("TEXT")
                 .IsRequired()
                 .HasMaxLength(512);
 
             mod.Entity<Node>()
                 .Property(p => p.NodeType)
-                .HasColumnName("NODE_TYPE")
-                .HasColumnType("INTEGER");
+                .HasColumnName("NODE_TYPE");
 
             mod.Entity<Node>()
                 .Property(p => p.NodeTopic)
-                .HasColumnName("NODE_TOPIC")
-                .HasColumnType("INTEGER");
+                .HasColumnName("NODE_TOPIC");
 
             mod.Entity<Node>()
                 .Property(p => p.NodeMatchName)
                 .HasColumnName("NODE_MATCH_NAME")
-                .HasColumnType("TEXT")
                 .IsRequired()
                 .HasMaxLength(512);
 
             mod.Entity<Node>()
                 .Property(p => p.NodeStatus)
-                .HasColumnName("NODE_STATUS")
-                .HasColumnType("INTEGER");
-
-            //mod.Entity<Node>()
-            //    .Property<DateTime>("LAST_MODIFIED")
-            //    .HasColumnType("DATETIME");
+                .HasColumnName("NODE_STATUS");
 
             mod.Entity<Node>().Ignore("HasEdits");
         }
@@ -75,42 +65,31 @@ namespace UnionAll.Store
 
             mod.Entity<Vector>()
                 .Property(v => v.VectorId)
-                .HasColumnName("VECTOR_ID")
-                .HasColumnType("INTEGER");
+                .HasColumnName("VECTOR_ID");
 
             mod.Entity<Vector>()
                 .Property(v => v.VectorPhrase)
-                .HasColumnName("VECTOR_PHRASE")
-                .HasColumnType("TEXT");
+                .HasColumnName("VECTOR_PHRASE");
 
             mod.Entity<Vector>()
                 .Property(v => v.NodeSubject)
-                .HasColumnName("NODE_SUBJECT")
-                .HasColumnType("INTEGER");
+                .HasColumnName("NODE_SUBJECT");
 
             mod.Entity<Vector>()
                 .Property(v => v.NodeObject)
-                .HasColumnName("NODE_OBJECT")
-                .HasColumnType("INTEGER");
+                .HasColumnName("NODE_OBJECT");
 
             mod.Entity<Vector>()
                 .Property(v => v.NodeParent)
-                .HasColumnName("NODE_PARENT")
-                .HasColumnType("INTEGER");
+                .HasColumnName("NODE_PARENT");
 
             mod.Entity<Vector>()
                 .Property(v => v.NodeRoot)
-                .HasColumnName("NODE_ROOT")
-                .HasColumnType("INTEGER");
+                .HasColumnName("NODE_ROOT");
 
             mod.Entity<Vector>()
                .Property(v => v.VectorStatus)
-               .HasColumnName("VECTOR_STATUS")
-               .HasColumnType("INTEGER");
-
-            //mod.Entity<Vector>()
-            //    .Property<DateTime>("LAST_MODIFIED")
-            //    .HasColumnType("DATETIME");
+               .HasColumnName("VECTOR_STATUS");
 
             mod.Entity<Vector>().Ignore("HasEdits");
 

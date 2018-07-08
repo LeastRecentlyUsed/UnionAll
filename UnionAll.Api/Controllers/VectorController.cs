@@ -36,7 +36,7 @@ namespace UnionAll.Api.Controllers
         /// <param name="nodeId">identifier of the node for the singel vector being requested</param>
         /// <param name="vectorId">identifier of the specific vector being requested</param>
         /// <returns>200 ok and the vector DTO if success</returns>
-        [HttpGet("fork/node/{nodeId}/vector/{vectorId}", Name="GetVector")]
+        [HttpGet("node/{nodeId}/vector/{vectorId}", Name="GetVector")]
         public async Task<IActionResult> GetVector(int nodeId, int vectorId,
                         [FromHeader(Name = "Accept")] string mediaType)
         {
@@ -45,7 +45,7 @@ namespace UnionAll.Api.Controllers
             if (domainVector == null)
                 return NotFound();
 
-            if (mediaType == "application/vnd.fork.v1+json")
+            if (mediaType == "application/unionall+json")
             {
                 var providedVector = Mapper.Map<VectorWithLinksDto>(domainVector);
                 return Ok(CreateLinksForVector(providedVector));
@@ -63,7 +63,7 @@ namespace UnionAll.Api.Controllers
         /// </summary>
         /// <param name="id">identifier of the specific node of the required vectors</param>
         /// <returns>200 ok and the collection of vector DTOs if success</returns>
-        [HttpGet("fork/node/{nodeId}/vectors", Name="GetVectorsForNode")]
+        [HttpGet("node/{nodeId}/vectors", Name="GetVectorsForNode")]
         public async Task<IActionResult> GetVectorsForNode(int nodeId, 
                         DataRequestParams reqParams,
                         [FromHeader(Name = "Accept")] string mediaType)
@@ -73,7 +73,7 @@ namespace UnionAll.Api.Controllers
             if (nodeVectors == null)
                 return NotFound();
 
-            if (mediaType == "application/vnd.fork.v1+json")
+            if (mediaType == "application/unionall+json")
             {
                 var providedVectors = Mapper.Map<IEnumerable<VectorWithLinksDto>>(nodeVectors);
 
@@ -106,7 +106,7 @@ namespace UnionAll.Api.Controllers
         /// </summary>
         /// <param name="id">a string list of Node Ids such as '(1,2,3,4)' mapped to an int array</param>
         /// <returns>200 ok and the set of vectors if success</returns>
-        [HttpGet("fork/node/{nodeId}/vectors/({ids})", Name = "GetVectorSetForNode")]
+        [HttpGet("node/{nodeId}/vectors/({ids})", Name = "GetVectorSetForNode")]
         public async Task<IActionResult> GetVectorSetForNode(int nodeId,
                         DataRequestParams reqParams,
                         [ModelBinder(BinderType = typeof(StringListToIntArray))] IEnumerable<int> ids,
@@ -120,7 +120,7 @@ namespace UnionAll.Api.Controllers
             if (vectorSet == null)
                 return NotFound();
 
-            if (mediaType == "application/vnd.fork.v1+json")
+            if (mediaType == "application/unionall+json")
             {
                 var providedVectors = Mapper.Map<IEnumerable<VectorWithLinksDto>>(vectorSet);
 
@@ -148,7 +148,7 @@ namespace UnionAll.Api.Controllers
         /// </summary>
         /// <param name="requestVector">the vector mapped from the request body to the DTO</param>
         /// <returns>201 created response if success</returns>
-        [HttpPost("fork/node/{nodeId}/vector", Name="CreateVector")]
+        [HttpPost("node/{nodeId}/vector", Name="CreateVector")]
         public async Task<IActionResult> PostVector(int nodeId,
                         [FromBody] Models.VectorCreateDto requestVector,
                         [FromHeader(Name = "Accept")] string mediaType)
@@ -170,7 +170,7 @@ namespace UnionAll.Api.Controllers
 
             _logger.LogInformation(LogEvents.NewVector, "CREATED vector {a}.", savedVector.VectorId);
 
-            if (mediaType == "application/vnd.fork.v1+json")
+            if (mediaType == "application/unionall+json")
             {
                 var providedVector = Mapper.Map<VectorWithLinksDto>(savedVector);
                 // return a 201 created response (and the new resource location URI).
@@ -194,7 +194,7 @@ namespace UnionAll.Api.Controllers
         /// </summary>
         /// <param name="requestVectorSet">the vector set mapped from the request body to the dto class</param>
         /// <returns>201 created if success</returns>
-        [HttpPost("fork/node/{nodeId}/vectors", Name = "CreateVectorSet")]
+        [HttpPost("node/{nodeId}/vectors", Name = "CreateVectorSet")]
         public async Task<IActionResult> PostVectorSet(int nodeId,
                         DataRequestParams reqParams,
                         [FromBody] IEnumerable<Models.VectorCreateDto> requestVectorSet,
@@ -216,7 +216,7 @@ namespace UnionAll.Api.Controllers
 
             _logger.LogInformation(LogEvents.ModifiedVector, "CREATED vector set {a}.", idList);
 
-            if (mediaType == "application/vnd.fork.v1+json")
+            if (mediaType == "application/unionall+json")
             {
                 var providedVectoreSet = Mapper.Map<IEnumerable<VectorWithLinksDto>>(savedVectorSet);
 
@@ -245,7 +245,7 @@ namespace UnionAll.Api.Controllers
         /// </summary>
         /// <param name="id">the vector id for attempted creation</param>
         /// <returns>a 400 response code</returns>
-        [HttpPost("fork/node/{nodeId}/vector/{vectorId}")]
+        [HttpPost("node/{nodeId}/vector/{vectorId}")]
         public async Task<IActionResult> PostVector(int nodeId, int vectorId)
         {
             var domainVector = await _vectorRepo.SelectVectorAsync(nodeId, vectorId);
@@ -262,7 +262,7 @@ namespace UnionAll.Api.Controllers
         /// </summary>
         /// <param name="id">the vector id for deletion</param>
         /// <returns>204 no content if success</returns>
-        [HttpDelete("fork/node/{nodeId}/vector/{vectorId}", Name="DeleteVector")]
+        [HttpDelete("node/{nodeId}/vector/{vectorId}", Name="DeleteVector")]
         public async Task<IActionResult> DeleteVector(int nodeId, int vectorId)
         {
             var domainVector = await _vectorRepo.SelectVectorAsync(nodeId, vectorId);
@@ -289,7 +289,7 @@ namespace UnionAll.Api.Controllers
         /// </summary>
         /// <param name="id">the vector id for the full update</param>
         /// <returns>204 no content if success</returns>
-        [HttpPut("fork/node/{nodeId}/vector/{vectorId}", Name="UpdateVector")]
+        [HttpPut("node/{nodeId}/vector/{vectorId}", Name="UpdateVector")]
         public async Task<IActionResult> PutVector(int nodeId, int vectorId, 
                         [FromBody] VectorUpdateDto requestVector)
         {
@@ -326,7 +326,7 @@ namespace UnionAll.Api.Controllers
         /// </summary>
         /// <param name="id">the vector id for the partial update</param>
         /// <returns>204 no content if success</returns>
-        [HttpPatch("fork/node/{nodeId}/vector/{vectorId}", Name="PartiallyUpdateVector")]
+        [HttpPatch("node/{nodeId}/vector/{vectorId}", Name="PartiallyUpdateVector")]
         public async Task<IActionResult> PatchVector(int nodeId, int vectorId, 
                         [FromBody] JsonPatchDocument<VectorUpdateDto> patchDoc)
         {

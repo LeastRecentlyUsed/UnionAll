@@ -40,7 +40,7 @@ namespace UnionAll.Api.Controllers
         /// Query the DataStore for the list of all Node name & id pairs.
         /// </summary>
         /// <returns>a list of node name & identifier pairs</returns>
-        [HttpGet("fork/nodes/pairs", Name = "GetNodePairs")]
+        [HttpGet("nodes/pairs", Name = "GetNodePairs")]
         public async Task<IActionResult> GetNodeList(DataRequestParams reqParams)
         {
             var keyValuePairs = await _nodeRepo.SelectNodeListAsync(reqParams);
@@ -61,13 +61,13 @@ namespace UnionAll.Api.Controllers
         /// Query the DataStore for the list of all Nodes.
         /// </summary>
         /// <returns>a list of node identifiers</returns>
-        [HttpGet("fork/nodes", Name ="GetNodeList")]
+        [HttpGet("nodes", Name ="GetNodeList")]
         public async Task<IActionResult> GetNodeList(DataRequestParams reqParams, 
                          [FromHeader(Name="Accept")] string mediaType)
         {
             var domainNodes = await _nodeRepo.SelectAllNodesAsync(reqParams);
 
-            if (mediaType == "application/vnd.fork.v1+json")
+            if (mediaType == "application/unionall+json")
             {
                 var providedNodes = Mapper.Map<IEnumerable<NodeWithLinksDto>>(domainNodes);
 
@@ -100,7 +100,7 @@ namespace UnionAll.Api.Controllers
         /// </summary>
         /// <param name="ids">a string list of Node Ids such as '(1,2,3,4)' mapped to an int array</param>
         /// <returns>200 OK and the set of Nodes, if success</returns>
-        [HttpGet("fork/nodes/({ids})", Name = "GetNodeSet")]
+        [HttpGet("nodes/({ids})", Name = "GetNodeSet")]
         public async Task<IActionResult> GetNodeSet(DataRequestParams reqParams,
                         [ModelBinder(BinderType = typeof(StringListToIntArray))] IEnumerable<int> ids,
                         [FromHeader(Name="Accept")] string mediaType)
@@ -114,7 +114,7 @@ namespace UnionAll.Api.Controllers
             if (ids.Count() != domainNodeSet.Count())
                 return NotFound();
 
-            if (mediaType == "application/vnd.fork.v1+json")
+            if (mediaType == "application/unionall+json")
             {
                 var providedNodeSet = Mapper.Map<IEnumerable<NodeWithLinksDto>>(domainNodeSet);
 
@@ -142,7 +142,7 @@ namespace UnionAll.Api.Controllers
         /// </summary>
         /// <param name="requestNodeSet">the node set mapped from the request body to the dto class</param>
         /// <returns>201 created if success</returns>
-        [HttpPost("fork/nodes", Name = "CreateNodeSet")]
+        [HttpPost("nodes", Name = "CreateNodeSet")]
         public async Task<IActionResult> CreateNodeSet(DataRequestParams reqParams,
                         [FromBody] IEnumerable<NodeCreateDto> requestNodeSet,
                         [FromHeader(Name = "Accept")] string mediaType)
@@ -162,7 +162,7 @@ namespace UnionAll.Api.Controllers
 
             _logger.LogInformation(LogEvents.NewNodeSet, "CREATED Nodeset {a}.", idList);
 
-            if (mediaType == "application/vnd.fork.v1+json")
+            if (mediaType == "application/unionall+json")
             {
                 var providedNodeSet = Mapper.Map<IEnumerable<NodeWithLinksDto>>(savedNodeSet);
 
@@ -190,7 +190,7 @@ namespace UnionAll.Api.Controllers
         /// </summary>
         /// <param name="id">identifier of the specific Node being requested</param>
         /// <returns>200 Ok and the node DTO if success</returns>
-        [HttpGet("fork/node/{id}", Name="GetNode")]
+        [HttpGet("node/{id}", Name="GetNode")]
         public async Task<IActionResult> GetNode(int id,
                         [FromHeader(Name = "Accept")] string mediaType)
         {
@@ -199,7 +199,7 @@ namespace UnionAll.Api.Controllers
             if (domainNode == null)
                 return NotFound();
 
-            if (mediaType == "application/vnd.fork.v1+json")
+            if (mediaType == "application/unionall+json")
             {
                 //currenty AutoMapper converts enumerations to string if that is the target type in the DTO.
                 var providedNode = Mapper.Map<NodeWithLinksDto>(domainNode);
@@ -220,7 +220,7 @@ namespace UnionAll.Api.Controllers
         /// </summary>
         /// <param name="requestNode">the node object mapped from the request body to the DTO</param>
         /// <returns>201 created response if success</returns>
-        [HttpPost("fork/node", Name="CreateNode")]
+        [HttpPost("node", Name="CreateNode")]
         public async Task<IActionResult> PostNode([FromBody] NodeCreateDto requestNode,
                         [FromHeader(Name = "Accept")] string mediaType)
         {
@@ -241,7 +241,7 @@ namespace UnionAll.Api.Controllers
 
             _logger.LogInformation(LogEvents.NewNode, "CREATED node {a}.", savedNode.NodeId);
 
-            if (mediaType == "application/vnd.fork.v1+json")
+            if (mediaType == "application/unionall+json")
             {
                 var providedNode = Mapper.Map<NodeWithLinksDto>(savedNode);
 
@@ -264,7 +264,7 @@ namespace UnionAll.Api.Controllers
         /// </summary>
         /// <param name="id">the node id for attempted creation</param>
         /// <returns>a 400 response code</returns>
-        [HttpPost("fork/node/{id}")]
+        [HttpPost("node/{id}")]
         public async Task<IActionResult> PostNode(int id)
         {
             var domainNode = await _nodeRepo.SelectNodeAsync(id);
@@ -285,7 +285,7 @@ namespace UnionAll.Api.Controllers
         /// </summary>
         /// <param name="id">the node id for deletion</param>
         /// <returns>204 no content if success</returns>
-        [HttpDelete("fork/node/{id}", Name="DeleteNode")]
+        [HttpDelete("node/{id}", Name="DeleteNode")]
         public async Task<IActionResult> DeleteNode(int id)
         {
             var domainNode = await _nodeRepo.SelectNodeAsync(id);
@@ -313,7 +313,7 @@ namespace UnionAll.Api.Controllers
         /// </summary>
         /// <param name="id">the node id for the full update</param>
         /// <returns>204 no content if success</returns>
-        [HttpPut("fork/node/{id}", Name="UpdateNode")]
+        [HttpPut("node/{id}", Name="UpdateNode")]
         public async Task<IActionResult> PutNode(int id, 
                         [FromBody] Models.NodeUpdateDto requestNode)
         {
@@ -354,7 +354,7 @@ namespace UnionAll.Api.Controllers
         /// </summary>
         /// <param name="id">the node id for the partial update</param>
         /// <returns>204 no content if success</returns>
-        [HttpPatch("fork/node/{id}", Name="PartiallyUpdateNode")]
+        [HttpPatch("node/{id}", Name="PartiallyUpdateNode")]
         public async Task<IActionResult> PatchNode(int id, 
                         [FromBody] JsonPatchDocument<NodeUpdateDto> patchDoc)
         {

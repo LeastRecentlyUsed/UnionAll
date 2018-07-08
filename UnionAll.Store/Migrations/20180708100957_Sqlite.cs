@@ -11,13 +11,13 @@ namespace UnionAll.Store.Migrations
                 name: "NODE",
                 columns: table => new
                 {
-                    NODE_ID = table.Column<int>(type: "INTEGER", nullable: false)
+                    NODE_ID = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    NODE_NAME = table.Column<string>(type: "TEXT", maxLength: 512, nullable: false),
-                    NODE_TYPE = table.Column<long>(type: "INTEGER", nullable: false),
-                    NODE_TOPIC = table.Column<long>(type: "INTEGER", nullable: false),
-                    NODE_STATUS = table.Column<long>(type: "INTEGER", nullable: false),
-                    NODE_MATCH_NAME = table.Column<string>(type: "TEXT", maxLength: 512, nullable: false),
+                    NODE_NAME = table.Column<string>(maxLength: 512, nullable: false),
+                    NODE_TYPE = table.Column<int>(nullable: false),
+                    NODE_TOPIC = table.Column<int>(nullable: false),
+                    NODE_STATUS = table.Column<int>(nullable: false),
+                    NODE_MATCH_NAME = table.Column<string>(maxLength: 512, nullable: false),
                     LAST_MODIFIED = table.Column<DateTime>(type: "DATETIME", nullable: false)
                 },
                 constraints: table =>
@@ -29,14 +29,14 @@ namespace UnionAll.Store.Migrations
                 name: "VECTOR",
                 columns: table => new
                 {
-                    VECTOR_ID = table.Column<int>(type: "INTEGER", nullable: false)
+                    VECTOR_ID = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    VECTOR_PHRASE = table.Column<string>(type: "TEXT", nullable: false),
-                    NODE_SUBJECT = table.Column<int>(type: "INTEGER", nullable: false),
-                    NODE_OBJECT = table.Column<int>(type: "INTEGER", nullable: false),
-                    NODE_PARENT = table.Column<int>(type: "INTEGER", nullable: false),
-                    NODE_ROOT = table.Column<int>(type: "INTEGER", nullable: false),
-                    VECTOR_STATUS = table.Column<long>(type: "INTEGER", nullable: false),
+                    VECTOR_PHRASE = table.Column<string>(nullable: false),
+                    NODE_SUBJECT = table.Column<int>(nullable: false),
+                    NODE_OBJECT = table.Column<int>(nullable: false),
+                    NODE_PARENT = table.Column<int>(nullable: false),
+                    NODE_ROOT = table.Column<int>(nullable: false),
+                    VECTOR_STATUS = table.Column<int>(nullable: false),
                     LAST_MODIFIED = table.Column<DateTime>(type: "DATETIME", nullable: false)
                 },
                 constraints: table =>
